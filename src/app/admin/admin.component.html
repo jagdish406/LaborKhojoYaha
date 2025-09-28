@@ -19,7 +19,7 @@
                         <td><mat-form-field class="example-full-width">
                                 <mat-label>Telephone</mat-label>
                                 <span matTextPrefix>+91 &nbsp;</span>
-                                <input type="tel" matInput placeholder="555-555-1234" formControlName="telephone" required>
+                                <input type="tel" matInput placeholder="555-555-1234" maxlength="10" formControlName="telephone" required>
                                 <mat-icon matSuffix>mode_edit</mat-icon>
                             </mat-form-field></td>
 
@@ -47,14 +47,14 @@
                     <td>
                     <mat-form-field class="example-full-width">
                         <mat-label>Adhar no</mat-label>
-                                <input type="tel" matInput placeholder="5555-5555-1234" formControlName="adharNo" required>
+                                <input type="tel" matInput placeholder="5555-5555-1234" maxlength="12" formControlName="adharNo" required>
                                 <mat-icon matSuffix>mode_edit</mat-icon>
                     </mat-form-field>
                     </td>
                     <td>
                     <mat-form-field class="example-full-width">
                         <mat-label>Address</mat-label>
-                         <input type="tel" matInput placeholder="555-555-1234" formControlName="address" required>
+                         <input type="text" matInput placeholder="555-555-1234" formControlName="address" required>
                         
                     </mat-form-field>
                     </td>
@@ -101,7 +101,7 @@
                 </table> 
                 
                 <div class="example-button-row">
-    <button mat-raised-button matButton="filled" color="primary" type="submit" [disabled]="adminForm.invalid">Submit Record </button>
+    <button mat-raised-button matButton="filled" color="primary" type="submit" [disabled]="adminForm.invalid" [ngClass]="{'enabled': !adminForm.invalid}">Submit Record </button>
   </div>
 
                 
@@ -184,6 +184,6 @@
             <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
 
-        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator>
     </div>
 </div>

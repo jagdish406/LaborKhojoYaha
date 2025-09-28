@@ -8,12 +8,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 /* Correct SCSS/Sass Import (Using the tilde) */
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
-button {
+button.enabled  {
     background: #2563eb;
     padding: 10px;
     border-radius: 20px;
     border: 1px solid transparent;
     color: white;
+}
+button {
+    padding: 10px;
+    border-radius: 20px;
 }
 .mat-mdc-form-field{
     width: 99%;
