@@ -1,0 +1,189 @@
+<div class="admin-container">
+    <h2>Filling request forms</h2>
+
+    <mat-card class="form-card">
+        <mat-card-content>
+            <form [formGroup]="adminForm" (ngSubmit)="onSubmit()">
+                <table class="example-full-width" cellspacing="0">
+                    <tr>
+                        <td><mat-form-field class="example-full-width">
+                                <mat-label>First name</mat-label>
+                                <input matInput formControlName="firstName" required>
+                            </mat-form-field></td>
+                        <td><mat-form-field class="example-full-width">
+                                <mat-label>Last Name</mat-label>
+                                <input matInput formControlName="lastName" required>
+                            </mat-form-field></td>
+                    </tr>
+                    <tr>
+                        <td><mat-form-field class="example-full-width">
+                                <mat-label>Telephone</mat-label>
+                                <span matTextPrefix>+91 &nbsp;</span>
+                                <input type="tel" matInput placeholder="555-555-1234" formControlName="telephone" required>
+                                <mat-icon matSuffix>mode_edit</mat-icon>
+                            </mat-form-field></td>
+
+                        <td><mat-form-field appearance="fill">
+                                <mat-label>Type</mat-label>
+                                <mat-select formControlName="type" required>
+                                    <mat-option value="Thekedar">Thekedar</mat-option>
+                                    <mat-option value="Labor">Labor</mat-option>
+                                    <mat-option value="Carpenter">Carpenter</mat-option>
+                                    <mat-option value="Electrician">Electrician</mat-option>
+                                    <mat-option value="Plumber">Plumber</mat-option>
+                                    <mat-option value="Helper">Helper</mat-option>
+                                    <mat-option value="Rajgir">Rajgir</mat-option>
+                                    <mat-option value="Furniture">Furniture</mat-option>
+                                    <mat-option value="Driver">Driver</mat-option>
+                                    <mat-option value="Four Wheeler">Four Wheeler</mat-option>
+                                    <mat-option value="Tent House">Tent House</mat-option>
+                                    <mat-option value="Material">Material (Marble, etc.)</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="adminForm.get('type')?.hasError('required')">Type is
+                                    required</mat-error>
+                            </mat-form-field></td>
+                    </tr>
+                      <tr>
+                    <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Adhar no</mat-label>
+                                <input type="tel" matInput placeholder="5555-5555-1234" formControlName="adharNo" required>
+                                <mat-icon matSuffix>mode_edit</mat-icon>
+                    </mat-form-field>
+                    </td>
+                    <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Address</mat-label>
+                         <input type="tel" matInput placeholder="555-555-1234" formControlName="address" required>
+                        
+                    </mat-form-field>
+                    </td>
+                </tr>
+                 <tr>
+                        <td><mat-form-field class="example-full-width">
+                                <mat-label>City</mat-label>
+                                <input matInput placeholder="Enter city name" formControlName="city" required>
+                            </mat-form-field></td>
+                        <td><mat-form-field class="example-full-width">
+                                <mat-label>State</mat-label>
+                                <input matInput placeholder="Enter state name" formControlName="state" required>
+                            </mat-form-field></td>
+                       
+                    </tr>
+                    <tr>
+                        <td> <mat-form-field class="example-full-width">
+                                <mat-label>Pincode</mat-label>
+                                <input matInput #postalCode maxlength="12" placeholder="City pin code" value="94043" formControlName="pincode" required>
+                                
+                            </mat-form-field></td>
+                            <td>
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Experience</mat-label>
+                                <input matInput placeholder="Enter experience in years" formControlName="experience" required>
+                            </mat-form-field>
+                            </td>
+                    </tr>
+                     <tr  *ngIf="adminForm.get('type')?.value === 'Driver'">
+                       
+                            <td>
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Vehicle no</mat-label>
+                                <input matInput placeholder="Enter vehicle details" formControlName="vehicleNo" >
+                            </mat-form-field>
+                            </td>
+                            <td>
+                            <mat-form-field class="example-full-width">
+                                <mat-label>DL license number</mat-label>
+                                <input matInput placeholder="Enter driver license number" formControlName="driver">
+                            </mat-form-field>
+                            </td>
+                    </tr>
+                </table> 
+                
+                <div class="example-button-row">
+    <button mat-raised-button matButton="filled" color="primary" type="submit" [disabled]="adminForm.invalid">Submit Record </button>
+  </div>
+
+                
+            </form>
+        </mat-card-content>
+    </mat-card>
+
+    <hr>
+
+    <h3>Submitted Records</h3>
+    <div class="mat-elevation-z8">
+        <mat-table [dataSource]="dataSource">
+
+            <ng-container matColumnDef="type">
+                <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="firstName">
+                <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="lastName">
+                <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="telephone">
+                <mat-header-cell *matHeaderCellDef> Telephone </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.telephone}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="driver">
+                <mat-header-cell *matHeaderCellDef> Driver </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.driver}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="adharNo">
+                <mat-header-cell *matHeaderCellDef> Aadhar No </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.adharNo}} </mat-cell>
+            </ng-container> 
+            
+            <ng-container matColumnDef="address">
+                <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.address}} </mat-cell>
+            </ng-container>
+
+             <ng-container matColumnDef="city">
+                <mat-header-cell *matHeaderCellDef> City </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.city}} </mat-cell>
+            </ng-container>
+
+             <ng-container matColumnDef="state">
+                <mat-header-cell *matHeaderCellDef> State </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.state}} </mat-cell>
+            </ng-container>
+
+             <ng-container matColumnDef="pincode">
+                <mat-header-cell *matHeaderCellDef> Pincode </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.pincode}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="experience">
+                <mat-header-cell *matHeaderCellDef> Experience </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.experience}} </mat-cell>
+            </ng-container>
+
+             <ng-container matColumnDef="vehicleNo">
+                <mat-header-cell *matHeaderCellDef> Vehicle No </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.vehicleNo}} </mat-cell>
+             </ng-container>
+              <ng-container matColumnDef="date">
+                <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.date}} </mat-cell>
+             </ng-container>
+
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+</div>

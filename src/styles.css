@@ -1,1 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* src/styles.css (Add this along with your theme) */
+
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+/* Correct SCSS/Sass Import (Using the tilde) */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+button {
+    background: #2563eb;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    color: white;
+}
+.mat-mdc-form-field{
+    width: 99%;
+    margin: 
+    2px;
+
+}
+table {
+    width: 100%;
+}
+table, th, td {
+    border: 1px solid #cdcdcd36;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+th {
+    background-color: #2563eb;
+    color: white;
+}
+.mat-mdc-form-field {
+    width: 100%;
+}
+.example-button-row {
+    text-align: right;
+    margin-top: 20px;
+}
+h2, h3{
+    margin: 0; padding: 10px 20px; background: #555; color: white; font-weight: normal;}
+    .mat-mdc-header-row{
+    background-color: #2563eb !important;
+    color: white !important;
+    }
+.mat-mdc-cell, .mat-mdc-header-cell {
+    border-right: 1px solid #cdcdcd36;      
+}
